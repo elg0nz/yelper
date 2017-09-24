@@ -31,6 +31,57 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iGy-iU-iLy">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="businessTableViewCell" rowHeight="125" id="qD4-um-1EV" customClass="BusinessTableViewCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="125"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qD4-um-1EV" id="2Rg-NL-mKX">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="124.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97B-FO-cVj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Codmoder Fish and" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leA-A4-NfM">
+                                                            <rect key="frame" x="136" y="4" width="181" height="17"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="181" id="FkA-55-Rzf"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Dj-gq-IVN">
+                                                            <rect key="frame" x="4" y="4" width="128" height="117"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="128" id="yVO-Ww-SBF"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="0Dj-gq-IVN" firstAttribute="leading" secondItem="97B-FO-cVj" secondAttribute="leading" constant="4" id="CIX-39-LgW"/>
+                                                        <constraint firstItem="leA-A4-NfM" firstAttribute="leading" secondItem="0Dj-gq-IVN" secondAttribute="trailing" constant="4" id="Czn-vC-pfG"/>
+                                                        <constraint firstItem="0Dj-gq-IVN" firstAttribute="top" secondItem="97B-FO-cVj" secondAttribute="top" constant="4" id="obl-jV-hDA"/>
+                                                        <constraint firstItem="leA-A4-NfM" firstAttribute="top" secondItem="97B-FO-cVj" secondAttribute="top" constant="4" id="rF4-LN-dwV"/>
+                                                        <constraint firstAttribute="bottom" secondItem="leA-A4-NfM" secondAttribute="bottom" constant="104" id="smR-8o-TYL"/>
+                                                        <constraint firstAttribute="bottom" secondItem="0Dj-gq-IVN" secondAttribute="bottom" constant="4" id="yfu-rp-b52"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="97B-FO-cVj" firstAttribute="leading" secondItem="2Rg-NL-mKX" secondAttribute="leading" id="AqD-Ez-rQw"/>
+                                                <constraint firstItem="97B-FO-cVj" firstAttribute="top" secondItem="2Rg-NL-mKX" secondAttribute="top" id="Giu-Ti-OEa"/>
+                                                <constraint firstAttribute="bottom" secondItem="97B-FO-cVj" secondAttribute="bottom" id="RHl-xk-5am"/>
+                                                <constraint firstAttribute="trailing" secondItem="97B-FO-cVj" secondAttribute="trailing" id="oVd-hu-2Qv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="businessName" destination="leA-A4-NfM" id="06Y-Fw-KKO"/>
+                                            <outlet property="businessPicture" destination="0Dj-gq-IVN" id="CuN-P7-XAO"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.777525723" green="0.038230873640000003" blue="0.0015661325310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

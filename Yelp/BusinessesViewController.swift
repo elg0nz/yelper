@@ -44,9 +44,9 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "businessTableViewCell") as! BusinessTableViewCell
         let business = businesses[indexPath.row]
-        cell.textLabel?.text = business.name
+        cell.businessName?.text = business.name
         return cell
     }
 
