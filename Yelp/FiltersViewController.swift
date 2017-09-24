@@ -8,19 +8,38 @@
 
 import UIKit
 
-class FiltersViewController: UIViewController, UITableViewDataSource, SwitchCellDelegate {
+@objc protocol FiltersViewControllerDelegate {
+    @objc optional func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String: Any])
+}
+
+class FiltersViewController: UIViewController, UITableViewDataSource, SwitchCellDelegate, FiltersViewControllerDelegate {
     @IBAction func onCancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func onSearchButton(_ sender: Any) {
+        var filters = [String: Any]()
+        var selectedCategories = [String]()
+
+        for (indexPath, isSelected) in switchStates {
+            if isSelected {
+                let category = categories[indexPath.row]
+                selectedCategories.append(category["code"]!)
+            }
+        }
+
+        if selectedCategories.count > 0 {
+            filters["categories"] = selectedCategories
+        }
+
+        delegate?.filtersViewController?(filtersViewController: self, didUpdateFilters: filters)
         dismiss(animated: true, completion: nil)
     }
-
 
     @IBOutlet weak var tableView: UITableView!
 
     var categories: [[String:String]]!
     var switchStates: [IndexPath: Bool] = [IndexPath: Bool]()
+    weak var delegate: FiltersViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
