@@ -55,8 +55,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "businessTableViewCell") as! BusinessTableViewCell
         let business = businesses[indexPath.row]
-        cell.businessName?.text = business.name
-        cell.businessPicture.setImageWith(business.imageURL!)
+        cell.setData(business: business)
         return cell
     }
 

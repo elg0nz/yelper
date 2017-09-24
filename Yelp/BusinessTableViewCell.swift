@@ -23,4 +23,8 @@ class BusinessTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func setData(business: Business) {
+        self.businessName.text = business.name
+        self.businessPicture.setImageWith(business.imageURL!)
+    }
 }
