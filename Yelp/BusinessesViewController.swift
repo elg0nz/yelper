@@ -21,9 +21,14 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         searchBar.backgroundColor = self.navigationBar.backgroundColor
     }
 
+    func setupTableView() {
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 125
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
+        setupTableView()
         addSearchBar()
         Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
             self.businesses = businesses
