@@ -9,16 +9,19 @@
 import UIKit
 import AFNetworking
 
-class BusinessesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FiltersViewControllerDelegate {
+class BusinessesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FiltersViewControllerDelegate, UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     var businesses: [Business]!
     let searchBar = UISearchBar()
+    var term: String = "Restaurant"
 
     func addSearchBar() {
         searchBar.sizeToFit()
         self.navigationItem.titleView = searchBar
         searchBar.backgroundColor = self.navigationBar.backgroundColor
+        searchBar.delegate = self
+        searchBar.text = self.term
     }
 
     func setupTableView() {
@@ -30,7 +33,7 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         setupTableView()
         addSearchBar()
-        Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
+        Business.searchWithTerm(term: "Restaurants", completion: { (businesses: [Business]?, error: Error?) -> Void in
             if let businesses = businesses {
                 self.businesses = businesses
                 self.tableView.reloadData()
@@ -57,6 +60,21 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: - Search
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchText.isEmpty || searchText.count < 3) {
+            self.term = "Restaurant"
+            self.searchBar.text = self.term
+        }
+        searchBusinesses(categories: nil)
+    }
+
+    func searchBusinesses(categories: [String]?) {
+        Business.searchWithTerm(term: "Restaurants", sort: nil, categories: categories, deals: nil, completion: { (businesses: [Business]?, error: Error?) -> Void in
+            self.businesses = businesses
+            self.tableView.reloadData()
+        })
+    }
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -65,11 +83,9 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         filtersViewController.delegate = self
     }
 
+    // MARK: - Filters
     func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String : Any]) {
-        var categories = filters["categories"] as? [String]
-        Business.searchWithTerm(term: "Restaurants", sort: nil, categories: categories, deals: nil, completion: { (businesses: [Business]?, error: Error?) -> Void in
-            self.businesses = businesses
-            self.tableView.reloadData()
-        })
+        let categories = filters["categories"] as? [String]
+        self.searchBusinesses(categories: categories)
     }
 }

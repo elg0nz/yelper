@@ -30,7 +30,9 @@ class BusinessTableViewCell: UITableViewCell {
     }
 
     func setData(business: Business) {
-        self.businessPicture.setImageWith(business.imageURL!)
+        if let imageUrl = business.imageURL {
+            self.businessPicture.setImageWith(imageUrl)
+        }
         self.businessName.text = business.name
         self.distance.text = business.distance
         self.ratingPicture.setImageWith(business.ratingImageURL!)
