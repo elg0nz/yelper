@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 class BusinessesViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
@@ -50,6 +51,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "businessTableViewCell") as! BusinessTableViewCell
         let business = businesses[indexPath.row]
         cell.businessName?.text = business.name
+        cell.businessPicture.setImageWith(business.imageURL!)
         return cell
     }
 

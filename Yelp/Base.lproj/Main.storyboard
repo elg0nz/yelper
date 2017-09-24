@@ -8,6 +8,16 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue-Bold</string>
+            <string>HelveticaNeue-Medium</string>
+        </array>
+        <array key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Light</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Businesses View Controller-->
         <scene sceneID="5L9-Uz-lNK">
@@ -43,29 +53,83 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Codmoder Fish and" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leA-A4-NfM">
-                                                            <rect key="frame" x="136" y="4" width="181" height="17"/>
+                                                            <rect key="frame" x="108" y="4" width="181" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="181" id="FkA-55-Rzf"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Dj-gq-IVN">
-                                                            <rect key="frame" x="4" y="4" width="128" height="117"/>
+                                                            <rect key="frame" x="4" y="4" width="100" height="100"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="128" id="yVO-Ww-SBF"/>
+                                                                <constraint firstAttribute="height" constant="100" id="sOc-Ru-xRp"/>
+                                                                <constraint firstAttribute="width" constant="100" id="yVO-Ww-SBF"/>
                                                             </constraints>
                                                         </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.8 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qm0-k4-Fim">
+                                                            <rect key="frame" x="338" y="4" width="33" height="14"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                            <color key="textColor" red="0.6368201596112294" green="0.64352352971240023" blue="0.64352352971240023" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G3p-2e-MYX">
+                                                            <rect key="frame" x="112" y="29" width="128" height="15"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="128" id="w8Q-II-Wvl"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="469 Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9l-zk-byQ">
+                                                            <rect key="frame" x="248" y="29" width="73" height="15"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                            <color key="textColor" red="0.6368201596112294" green="0.64352352971240023" blue="0.64352352971240023" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPo-Nb-BZj">
+                                                            <rect key="frame" x="357" y="28" width="14" height="14"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                            <color key="textColor" red="0.6368201596112294" green="0.64352352971240023" blue="0.64352352971240023" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2824 Jones ST, North beach / Telegraph Hill" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmk-R0-udS">
+                                                            <rect key="frame" x="108" y="58.5" width="263" height="14.5"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="British, Fish &amp; Chips, Seafood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1H-Er-x8l">
+                                                            <rect key="frame" x="108" y="81" width="263" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="8GW-yL-2xF"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                                                            <color key="textColor" red="0.6368201596112294" green="0.64352352971240023" blue="0.64352352971240023" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="i1H-Er-x8l" secondAttribute="bottom" constant="23" id="3Z8-HS-I0q"/>
                                                         <constraint firstItem="0Dj-gq-IVN" firstAttribute="leading" secondItem="97B-FO-cVj" secondAttribute="leading" constant="4" id="CIX-39-LgW"/>
                                                         <constraint firstItem="leA-A4-NfM" firstAttribute="leading" secondItem="0Dj-gq-IVN" secondAttribute="trailing" constant="4" id="Czn-vC-pfG"/>
+                                                        <constraint firstItem="G3p-2e-MYX" firstAttribute="top" secondItem="leA-A4-NfM" secondAttribute="bottom" constant="8" symbolic="YES" id="LyV-Cd-oOb"/>
+                                                        <constraint firstAttribute="bottom" secondItem="G3p-2e-MYX" secondAttribute="bottom" constant="81" id="NOB-FP-656"/>
+                                                        <constraint firstAttribute="trailing" secondItem="dPo-Nb-BZj" secondAttribute="trailing" constant="4" id="POX-UP-x7X"/>
+                                                        <constraint firstAttribute="trailing" secondItem="qm0-k4-Fim" secondAttribute="trailing" constant="4" id="auw-h1-pMr"/>
+                                                        <constraint firstItem="qm0-k4-Fim" firstAttribute="top" secondItem="97B-FO-cVj" secondAttribute="top" constant="4" id="cIp-VL-KNu"/>
+                                                        <constraint firstItem="dPo-Nb-BZj" firstAttribute="top" secondItem="qm0-k4-Fim" secondAttribute="bottom" constant="10" id="hAj-Bw-JdP"/>
+                                                        <constraint firstItem="i1H-Er-x8l" firstAttribute="leading" secondItem="gmk-R0-udS" secondAttribute="leading" id="hV9-RR-7zJ"/>
                                                         <constraint firstItem="0Dj-gq-IVN" firstAttribute="top" secondItem="97B-FO-cVj" secondAttribute="top" constant="4" id="obl-jV-hDA"/>
+                                                        <constraint firstItem="qm0-k4-Fim" firstAttribute="top" secondItem="97B-FO-cVj" secondAttribute="top" constant="4" id="qGP-VL-eWI"/>
                                                         <constraint firstItem="leA-A4-NfM" firstAttribute="top" secondItem="97B-FO-cVj" secondAttribute="top" constant="4" id="rF4-LN-dwV"/>
+                                                        <constraint firstItem="i1H-Er-x8l" firstAttribute="trailing" secondItem="gmk-R0-udS" secondAttribute="trailing" id="riL-9u-nMJ"/>
                                                         <constraint firstAttribute="bottom" secondItem="leA-A4-NfM" secondAttribute="bottom" constant="104" id="smR-8o-TYL"/>
-                                                        <constraint firstAttribute="bottom" secondItem="0Dj-gq-IVN" secondAttribute="bottom" constant="4" id="yfu-rp-b52"/>
+                                                        <constraint firstItem="i1H-Er-x8l" firstAttribute="leading" secondItem="0Dj-gq-IVN" secondAttribute="trailing" constant="4" id="ugs-HR-u8K"/>
+                                                        <constraint firstItem="i1H-Er-x8l" firstAttribute="top" secondItem="gmk-R0-udS" secondAttribute="bottom" constant="8" id="weg-mK-R7K"/>
+                                                        <constraint firstItem="G3p-2e-MYX" firstAttribute="leading" secondItem="0Dj-gq-IVN" secondAttribute="trailing" constant="8" symbolic="YES" id="xai-pC-9ph"/>
+                                                        <constraint firstAttribute="trailing" secondItem="i1H-Er-x8l" secondAttribute="trailing" constant="4" id="zv1-RG-6Jb"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
