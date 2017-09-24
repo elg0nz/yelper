@@ -46,7 +46,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qD4-um-1EV" id="2Rg-NL-mKX">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="124.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97B-FO-cVj">
@@ -141,8 +141,14 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="address" destination="gmk-R0-udS" id="4fu-pq-v9K"/>
                                             <outlet property="businessName" destination="leA-A4-NfM" id="06Y-Fw-KKO"/>
                                             <outlet property="businessPicture" destination="0Dj-gq-IVN" id="CuN-P7-XAO"/>
+                                            <outlet property="category" destination="i1H-Er-x8l" id="Dre-rI-ahF"/>
+                                            <outlet property="costGroup" destination="dPo-Nb-BZj" id="kkU-hH-Bca"/>
+                                            <outlet property="distance" destination="qm0-k4-Fim" id="dmi-Zk-M44"/>
+                                            <outlet property="ratingPicture" destination="G3p-2e-MYX" id="Q24-2v-Zvj"/>
+                                            <outlet property="reviews" destination="j9l-zk-byQ" id="tNK-7s-clS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

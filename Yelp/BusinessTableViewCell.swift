@@ -11,6 +11,12 @@ import UIKit
 class BusinessTableViewCell: UITableViewCell {
     @IBOutlet weak var businessPicture: UIImageView!
     @IBOutlet weak var businessName: UILabel!
+    @IBOutlet weak var distance: UILabel!
+    @IBOutlet weak var ratingPicture: UIImageView!
+    @IBOutlet weak var reviews: UILabel!
+    @IBOutlet weak var costGroup: UILabel!
+    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var category: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,7 +30,13 @@ class BusinessTableViewCell: UITableViewCell {
     }
 
     func setData(business: Business) {
-        self.businessName.text = business.name
         self.businessPicture.setImageWith(business.imageURL!)
+        self.businessName.text = business.name
+        self.distance.text = business.distance
+        self.ratingPicture.setImageWith(business.ratingImageURL!)
+        self.reviews.text = "\(business.reviewCount!) Reviews"
+        self.costGroup.text = "" // TODO: get this data from the API
+        self.address.text = business.address
+        self.category.text = business.categories
     }
 }
