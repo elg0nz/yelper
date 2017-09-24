@@ -31,25 +31,11 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         setupTableView()
         addSearchBar()
         Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
-            self.businesses = businesses
             if let businesses = businesses {
-                for business in businesses {
-                    print(business.name!)
-                    print(business.address!)
-                }
-             self.tableView.reloadData()
+                self.businesses = businesses
+                self.tableView.reloadData()
             }
         })
-
-        /* Example of Yelp search with more search options specified
-         Business.searchWithTerm("Restaurants", sort: .distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: Error!) -> Void in
-         self.businesses = businesses
-         for business in businesses {
-         print(business.name!)
-         print(business.address!)
-         }
-         }
-         */
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,7 +59,6 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
 
 
     // MARK: - Navigation
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let navigationController = segue.destination as! UINavigationController
         let filtersViewController = navigationController.topViewController as! FiltersViewController
