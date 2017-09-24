@@ -14,13 +14,16 @@ class BusinessesViewController: UIViewController, UITableViewDataSource {
     var businesses: [Business]!
     let searchBar = UISearchBar()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func addSearchBar() {
         searchBar.sizeToFit()
         self.navigationItem.titleView = searchBar
         searchBar.backgroundColor = self.navigationBar.backgroundColor
-        tableView.dataSource = self
+    }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.dataSource = self
+        addSearchBar()
         Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
             self.businesses = businesses
             if let businesses = businesses {
