@@ -63,15 +63,19 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: - Search
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if (searchText.isEmpty || searchText.count < 3) {
-            self.term = "Restaurant"
-            self.searchBar.text = self.term
+            return
         }
+        self.term = searchText
+        searchBusinesses(categories: nil, deals: false, distanceInMiles: nil)
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.term = "Restaurant"
         searchBusinesses(categories: nil, deals: false, distanceInMiles: nil)
     }
 
     func searchBusinesses(categories: [String]?, deals: Bool, distanceInMiles: Double?) {
-        let miles = distanceInMiles ?? nil
-        Business.searchWithTerm(term: "Restaurants", sort: nil, categories: categories, deals: deals, distanceInMiles: miles!, completion: { (businesses: [Business]?, error: Error?) -> Void in
+        Business.searchWithTerm(term: self.term, sort: nil, categories: categories, deals: deals, distanceInMiles: distanceInMiles, completion: { (businesses: [Business]?, error: Error?) -> Void in
             self.businesses = businesses
             self.tableView.reloadData()
         })
