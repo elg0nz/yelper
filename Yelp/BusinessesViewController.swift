@@ -66,11 +66,11 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
             self.term = "Restaurant"
             self.searchBar.text = self.term
         }
-        searchBusinesses(categories: nil)
+        searchBusinesses(categories: nil, deals: false)
     }
 
-    func searchBusinesses(categories: [String]?) {
-        Business.searchWithTerm(term: "Restaurants", sort: nil, categories: categories, deals: nil, completion: { (businesses: [Business]?, error: Error?) -> Void in
+    func searchBusinesses(categories: [String]?, deals: Bool) {
+        Business.searchWithTerm(term: "Restaurants", sort: nil, categories: categories, deals: deals, completion: { (businesses: [Business]?, error: Error?) -> Void in
             self.businesses = businesses
             self.tableView.reloadData()
         })
@@ -85,7 +85,9 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
 
     // MARK: - Filters
     func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String : Any]) {
+        print(filters)
         let categories = filters["categories"] as? [String]
-        self.searchBusinesses(categories: categories)
+        let deals = filters["deals_filter"] ?? false
+        self.searchBusinesses(categories: categories, deals: deals as! Bool)
     }
 }

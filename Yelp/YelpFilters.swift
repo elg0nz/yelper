@@ -8,8 +8,12 @@
 
 import UIKit
 
-class YelpCategories: NSObject {
-    func list() -> [[String:String]] {
+class YelpFilters: NSObject {
+    class func deals() -> [[String:String]] {
+        return [["name": "Has Deals", "code": "has_deals"]]
+    }
+
+    class func categories() -> [[String:String]] {
         return [["name" : "Afghan", "code": "afghani"],
                 ["name" : "African", "code": "african"],
                 ["name" : "American, New", "code": "newamerican"],
