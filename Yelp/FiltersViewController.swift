@@ -13,7 +13,7 @@ import UIKit
 }
 
 enum FilterSections: Int {
-    case deals = 0, categories
+    case deals = 0, distance, categories
 }
 
 class FiltersViewController: UIViewController, UITableViewDataSource, SwitchCellDelegate, FiltersViewControllerDelegate {
@@ -24,12 +24,25 @@ class FiltersViewController: UIViewController, UITableViewDataSource, SwitchCell
         var filters = [String: Any]()
         var selectedCategories = [String]()
         var showDeals = false
+        var distanceInMiles:Double? = nil
 
+        // TODO: Refactor
         for (indexPath, isSelected) in switchStates {
             if isSelected && indexPath.section == FilterSections.categories.rawValue {
                 let category = categories[indexPath.row]
                 selectedCategories.append(category["code"]!)
             }
+
+            if isSelected && indexPath.section == FilterSections.distance.rawValue {
+                let distance = distances[indexPath.row]
+                if (distance["name"] == "auto") {
+                    distanceInMiles = nil
+                } else {
+                    let distanceStr = distance["code"]! as String
+                    distanceInMiles = Double(distanceStr)
+                }
+            }
+
             if isSelected && indexPath.section == FilterSections.deals.rawValue  {
                 let deal = deals[indexPath.row]
                 if (deal["code"] == "has_deals") {
@@ -42,6 +55,9 @@ class FiltersViewController: UIViewController, UITableViewDataSource, SwitchCell
             filters["categories"] = selectedCategories
         }
         filters["deals_filter"] = showDeals
+        if distanceInMiles != nil {
+            filters["distance_in_miles"] = distanceInMiles
+        }
 
         delegate?.filtersViewController?(filtersViewController: self, didUpdateFilters: filters)
         dismiss(animated: true, completion: nil)
@@ -49,16 +65,18 @@ class FiltersViewController: UIViewController, UITableViewDataSource, SwitchCell
 
     @IBOutlet weak var tableView: UITableView!
 
-    var categories: [[String:String]]!
-    var deals: [[String:String]]!
+    var categories: [[String: String]]!
+    var deals: [[String: String]]!
+    var distances: [[String: String]]!
     var switchStates: [IndexPath: Bool] = [IndexPath: Bool]()
     weak var delegate: FiltersViewControllerDelegate?
-    let sections = ["", "Categories"] // FIXME: Get these names from the enum.
+    let sections = ["", "Distance", "Categories"] // FIXME: Get these names from the enum.
     override func viewDidLoad() {
         super.viewDidLoad()
 
         categories = YelpFilters.categories()
         deals = YelpFilters.deals()
+        distances = YelpFilters.distances()
         tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
@@ -78,6 +96,9 @@ class FiltersViewController: UIViewController, UITableViewDataSource, SwitchCell
         case FilterSections.categories.rawValue:
             cell.switchLabel.text = categories[indexPath.row]["name"]
             break;
+        case FilterSections.distance.rawValue:
+            cell.switchLabel.text = distances[indexPath.row]["name"]
+            break;
         default:
             cell.switchLabel.text = ""
             break;
@@ -94,6 +115,8 @@ class FiltersViewController: UIViewController, UITableViewDataSource, SwitchCell
             return deals.count
         case FilterSections.categories.rawValue:
             return categories.count
+        case FilterSections.distance.rawValue:
+            return distances.count
         default:
             return 0
         }

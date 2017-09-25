@@ -13,6 +13,17 @@ class YelpFilters: NSObject {
         return [["name": "Has Deals", "code": "has_deals"]]
     }
 
+    class func distances() -> [[String: String]] {
+        return [
+            ["name": "Auto", "code": "0"],
+            ["name": "0.3 Miles", "code": "0.3"],
+            ["name": "1 mile", "code": "1"],
+            ["name": "5 mile", "code": "5"],
+            ["name": "20 mile", "code": "20"],
+
+        ]
+    }
+
     class func categories() -> [[String:String]] {
         return [["name" : "Afghan", "code": "afghani"],
                 ["name" : "African", "code": "african"],
